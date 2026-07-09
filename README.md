@@ -53,7 +53,7 @@ Aplikasi ini dapat dijalankan dengan mudah melalui langkah-langkah berikut:
    ```
 ---
 
-##📦 dashboard_shopnesia
+## 📦 dashboard_shopnesia
 * 📜 tugas_dashboard.py    # Skrip utama aplikasi Streamlit (UI & Logic)
 * 📜 Dataset_bersih.csv    # Dataset e-commerce yang telah dibersihkan
 * 📜 Dataset_bersih.xlsx   # Backup dataset format Excel
