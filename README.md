@@ -51,3 +51,23 @@ Aplikasi ini dapat dijalankan dengan mudah melalui langkah-langkah berikut:
    ```bash
    streamlit run tugas_dashboard.py
    ```
+---
+
+📦 dashboard_shopnesia
+ ┣ 📜 tugas_dashboard.py    # Skrip utama aplikasi Streamlit (UI & Logic)
+ ┣ 📜 Dataset_bersih.csv    # Dataset e-commerce yang telah dibersihkan
+ ┣ 📜 Dataset_bersih.xlsx   # Backup dataset format Excel
+ ┣ 📜 requirements.txt      # Daftar pustaka/library Python yang dibutuhkan
+ ┗ 📜 README.md             # Dokumentasi proyek
+
+---
+
+ 👥 Tim Pengembang
+Proyek ini dikembangkan sebagai tugas Data Analytics dan Visualisasi (DAV) oleh kelompok kami:
+* Adinata (Data Preparation & Initial Setup)
+* Danendra (Data Processing & Repository Management)
+* Dzikri (UI/UX Layout Optimization)
+* Yama Dewa / 12paradewa (UX Enhancement, Interactivity & Documentation)
+Dashboard ini di-deploy menggunakan Streamlit Community Cloud.
+
+---
