@@ -1,3 +1,6 @@
+# =========================
+# START OF FILE tugas_dashboard.py
+# =========================
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -228,6 +231,22 @@ st.markdown("""
     .stPlotlyChart {
         margin-bottom: -0.5rem;
     }
+
+    /* ========================================= */
+    /* TAMBAHAN UX BORDER UNTUK FITUR MULTISELECT */
+    /* ========================================= */
+    /* Kondisi Normal (belum diklik): Border abu-abu/hijau tipis */
+    div[data-baseweb="select"] > div {
+        border: 1px solid rgba(56, 71, 11, 0.3) !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    /* Kondisi Aktif (saat diklik): Border hijau tebal */
+    div[data-baseweb="select"] > div:focus-within {
+        border: 2px solid #38470B !important;
+    }
+    /* ========================================= */
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -535,7 +554,7 @@ def format_delta(delta, invert=False):
         return ""
     arrow = "▲" if delta >= 0 else "▼"
     is_good = (delta >= 0 and not invert) or (delta < 0 and invert)
-    css_class = "kpi-delta-up" if is_good else "kpi-delta-down"
+    css_class = "kpi-badge-up" if is_good else "kpi-badge-down"
     return f'<span class="{css_class}">{arrow} {abs(delta):.1f}%</span>'
 
 # =========================
@@ -1015,5 +1034,3 @@ elif page == "💡 Insight Eksekutif":
         hide_index=True,
         height=optimal_height
     )
-
-# (Footer removed)
