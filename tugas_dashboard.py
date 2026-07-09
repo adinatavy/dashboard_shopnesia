@@ -29,13 +29,12 @@ st.markdown("""
         color: #2E3710;
     }
 
-    /* Kompres padding utama Streamlit supaya tiap page lebih ringkas & minim scroll */
     .block-container {
         padding-top: 2.5rem !important;
         padding-bottom: 0.5rem !important;
     }
     div[data-testid="stVerticalBlock"] > div {
-        gap: 0.3rem;
+        gap: 0.1rem;
     }
 
     /* Header styling (premium forest/moss gradient - extra compact) */
@@ -60,44 +59,51 @@ st.markdown("""
         font-weight: 300;
     }
 
-    /* KPI Cards (compact & modern white cards on soft beige background) */
-    .kpi-card {
-        background: #ffffff;
-        border: 1px solid #F1D6AB;
-        border-radius: 8px;
-        padding: 0.4rem 0.5rem;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    /* KPI Cards container styling */
+    div[data-testid="element-container"] > div[data-testid="stVerticalBlockBorderWrapper"] {
+        border: 1px solid rgba(241, 214, 171, 0.6) !important;
+        border-radius: 12px !important;
+        background-color: #ffffff !important;
+        padding: 0.8rem 1.0rem !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.015) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
     }
-    .kpi-card:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 12px rgba(56, 71, 11, 0.08);
-        border-color: #38470B;
+    div[data-testid="element-container"] > div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(56, 71, 11, 0.06) !important;
+        border-color: #38470B !important;
     }
     .kpi-label {
         color: #A0855B;
-        font-size: 0.58rem;
+        font-size: 0.62rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        margin-bottom: 0.15rem;
     }
-    .kpi-value {
-        color: #2E3710;
-        font-size: 0.95rem;
-        font-weight: 700;
-        margin-bottom: 0.1rem;
+    .kpi-value-container {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
     }
-    .kpi-delta-up {
+    .kpi-badge-up {
+        background-color: rgba(93, 112, 42, 0.12);
         color: #5D702A;
-        font-size: 0.72rem;
-        font-weight: 600;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
     }
-    .kpi-delta-down {
+    .kpi-badge-down {
+        background-color: rgba(192, 92, 92, 0.12);
         color: #C05C5C;
-        font-size: 0.72rem;
-        font-weight: 600;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
     }
 
     /* AI Insight Box (soft sand tint card - compact) */
@@ -149,10 +155,11 @@ st.markdown("""
         margin-bottom: 0.3rem;
     }
 
-    /* Sidebar */
+    /* Sidebar modern layout */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #F9F6F2 0%, #F1D6AB 100%);
-        border-right: 1px solid #F1D6AB;
+        background-color: #F9F6F2 !important;
+        border-right: 1px solid rgba(56, 71, 11, 0.08) !important;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.02) !important;
     }
     section[data-testid="stSidebar"] .stMarkdown h1,
     section[data-testid="stSidebar"] .stMarkdown h2,
@@ -160,19 +167,45 @@ st.markdown("""
         color: #2E3710;
     }
 
-    /* Tabs - extra compact */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 4px;
+    /* Sidebar custom button-navigation styling */
+    div[data-testid="stSidebar"] div.stButton {
+        margin-bottom: -6px !important;
     }
-    .stTabs [data-baseweb="tab"] {
-        border-radius: 6px 6px 0 0;
-        padding: 6px 14px;
-        font-weight: 700;
-        font-size: 0.8rem;
+    div[data-testid="stSidebar"] div.stButton > button {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(56, 71, 11, 0.12) !important;
+        border-radius: 12px !important;
+        padding: 12px 16px !important;
+        color: #2E3710 !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        height: auto !important;
+        font-size: 0.85rem !important;
+        width: 100% !important;
     }
-    .stTabs [data-baseweb="tab"] p {
-        font-size: 0.8rem !important;
+    div[data-testid="stSidebar"] div.stButton > button:hover {
+        border-color: #38470B !important;
+        background-color: #FAF8F4 !important;
+        transform: translateY(-2px) translateX(3px) !important;
+        box-shadow: 0 4px 12px rgba(56, 71, 11, 0.08) !important;
+        color: #38470B !important;
+    }
+    /* Selected/Active button page style (primary type) */
+    div[data-testid="stSidebar"] div.stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #38470B 0%, #2E3710 100%) !important;
+        border-color: #38470B !important;
+        color: #F9F6F2 !important;
+        box-shadow: 0 4px 14px rgba(56, 71, 11, 0.22) !important;
         font-weight: 700 !important;
+    }
+    div[data-testid="stSidebar"] div.stButton > button[kind="primary"]:hover {
+        background: linear-gradient(135deg, #38470B 0%, #2E3710 100%) !important;
+        color: #F9F6F2 !important;
+        transform: translateY(-2px) translateX(3px) !important;
+        box-shadow: 0 4px 14px rgba(56, 71, 11, 0.22) !important;
     }
 
     /* Hide default metric styling */
@@ -306,13 +339,69 @@ def load_data():
 
 df = load_data()
 
-# =========================
-# HORIZONTAL FILTERS (TOP LEVEL)
-# =========================
-st.markdown('<div class="section-header">Filter Dashboard</div>', unsafe_allow_html=True)
-col_f1, col_f2, col_f3, col_f4, col_f5 = st.columns(5)
+# Helper to generate sparkline data
+def get_sparkline_data(df_spark, value_col, date_col="order_date", agg_func="sum"):
+    grouped = df_spark.groupby(df_spark[date_col].dt.to_period("W"))
+    if agg_func == "sum":
+        series = grouped[value_col].sum()
+    elif agg_func == "count":
+        series = grouped[value_col].count()
+    elif agg_func == "nunique":
+        series = grouped[value_col].nunique()
+    elif agg_func == "mean":
+        series = grouped[value_col].mean()
+    else:
+        series = grouped[value_col].sum()
+    
+    series.index = series.index.to_timestamp()
+    return series
 
-with col_f1:
+# Initialize session state for navigation
+if "active_page" not in st.session_state:
+    st.session_state.active_page = "📊 Ringkasan Performa"
+
+with st.sidebar:
+    st.markdown("""
+    <div style="padding: 10px 0px 5px 0px; margin-bottom: 12px; border-bottom: 1px solid rgba(249, 246, 242, 0.15);">
+        <h1 style="color: #F9F6F2; font-weight: 900; font-size: 1.6rem; margin: 0; letter-spacing: -0.5px; background: linear-gradient(45deg, #39470B, #8CA052); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SHOPNESIA</h1>
+        <p style="color: #39470B; font-size: 0.65rem; margin: 2px 0 0 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Executive Dashboard</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="sidebar-section-header" style="margin-bottom: 10px;">Navigasi Halaman</div>', unsafe_allow_html=True)
+    
+    # Custom Modern Button Cards Navigation
+    if st.button(
+        "📊 Ringkasan Performa", 
+        use_container_width=True, 
+        key="btn_page_1", 
+        type="primary" if st.session_state.active_page == "📊 Ringkasan Performa" else "secondary"
+    ):
+        st.session_state.active_page = "📊 Ringkasan Performa"
+        st.rerun()
+
+    if st.button(
+        "🔍 Analisis Pasar", 
+        use_container_width=True, 
+        key="btn_page_2", 
+        type="primary" if st.session_state.active_page == "🔍 Analisis Pasar & Ops" else "secondary"
+    ):
+        st.session_state.active_page = "🔍 Analisis Pasar & Ops"
+        st.rerun()
+
+    if st.button(
+        "💡 Insight Eksekutif", 
+        use_container_width=True, 
+        key="btn_page_3", 
+        type="primary" if st.session_state.active_page == "💡 Insight Eksekutif" else "secondary"
+    ):
+        st.session_state.active_page = "💡 Insight Eksekutif"
+        st.rerun()
+
+# Map page selection for the rest of the application routing
+with st.sidebar:
+    st.markdown('<div class="sidebar-section-header" style="margin-top: 15px;">Filter Dashboard</div>', unsafe_allow_html=True)
+    
     selected_dates = st.date_input(
         "Rentang Tanggal",
         value=(df["order_date"].min().date(), df["order_date"].max().date())
@@ -326,7 +415,6 @@ with col_f1:
         start_date = df["order_date"].min().date()
         end_date = df["order_date"].max().date()
 
-with col_f2:
     all_categories = sorted(df["product_category"].unique().tolist())
     selected_categories = st.multiselect(
         "Kategori Produk",
@@ -335,7 +423,6 @@ with col_f2:
         placeholder="Semua Kategori"
     )
 
-with col_f3:
     all_provinces = sorted(df["customer_province"].unique().tolist())
     selected_provinces = st.multiselect(
         "Provinsi",
@@ -344,7 +431,6 @@ with col_f3:
         placeholder="Semua Provinsi"
     )
 
-with col_f4:
     all_payments = sorted(df["payment_method"].unique().tolist())
     selected_payments = st.multiselect(
         "Metode Pembayaran",
@@ -353,7 +439,6 @@ with col_f4:
         placeholder="Semua Metode"
     )
 
-with col_f5:
     all_tiers = sorted(df["brand_tier"].unique().tolist())
     selected_tiers = st.multiselect(
         "Brand Tier",
@@ -361,6 +446,8 @@ with col_f5:
         default=[],
         placeholder="Semua Tier"
     )
+# Map page selection for the rest of the application routing
+page = st.session_state.active_page
 
 # =========================
 # APPLY FILTERS
@@ -552,238 +639,381 @@ def generate_ai_summary(fdf):
     return summary
 
 
-# =========================
-# TABS
-# =========================
-tab1, tab2, tab3 = st.tabs([
-    "Ringkasan Performa & Produk",
-    "Analisis Pasar & Operasional",
-    "Insight Eksekutif"
-])
+# Navigation is now at the top of the sidebar
 
 # ==================================================
 # TAB 1 — Performa Keuangan & Produk
 # ==================================================
-with tab1:
+if page == "📊 Ringkasan Performa":
     # KPI CARDS
+    # Prepare sparkline series
+    spark_revenue = get_sparkline_data(filtered_df, "revenue", agg_func="sum")
+    spark_orders = get_sparkline_data(filtered_df, "order_id", agg_func="count")
+    spark_customers = get_sparkline_data(filtered_df, "customer_id", agg_func="nunique")
+
+    # For average order value
+    grouped_week = filtered_df.groupby(filtered_df["order_date"].dt.to_period("W"))
+    spark_aov = grouped_week.apply(lambda x: x["revenue"].sum() / len(x) if len(x) > 0 else 0)
+    spark_aov.index = spark_aov.index.to_timestamp()
+
+    spark_return = get_sparkline_data(filtered_df, "is_returned", agg_func="mean") * 100
+    spark_rating = get_sparkline_data(filtered_df, "rating", agg_func="mean")
+
     kpi_cols = st.columns(6)
     kpi_data = [
-        ("Total Revenue", f"Rp {total_revenue:,.0f}", delta_revenue, False),
-        ("Total Pesanan", f"{total_orders:,}", delta_orders, False),
-        ("Pelanggan Unik", f"{total_customers:,}", delta_customers, False),
-        ("Rata-rata Pesanan", f"Rp {avg_order_value:,.0f}", None, False),
-        ("Tingkat Retur", f"{return_rate:.2f}%", delta_return, True),
-        ("Rating Rata-rata", f"{avg_rating:.2f}/5.0", delta_rating, False),
+        ("Total Revenue", f"Rp {total_revenue:,.0f}", delta_revenue, False, spark_revenue),
+        ("Total Pesanan", f"{total_orders:,}", delta_orders, False, spark_orders),
+        ("Pelanggan Unik", f"{total_customers:,}", delta_customers, False, spark_customers),
+        ("Rata-rata Pesanan", f"Rp {avg_order_value:,.0f}", None, False, spark_aov),
+        ("Tingkat Retur", f"{return_rate:.2f}%", delta_return, True, spark_return),
+        ("Rating Rata-rata", f"{avg_rating:.2f}/5.0", delta_rating, False, spark_rating),
     ]
 
-    for col, (label, value, delta, invert) in zip(kpi_cols, kpi_data):
-        delta_html = format_delta(delta, invert) if delta is not None else format_delta(None)
-        col.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">{label}</div>
-            <div class="kpi-value">{value}</div>
-            {delta_html}
-        </div>
-        """, unsafe_allow_html=True)
+    for col, (label, value, delta, invert, spark_series) in zip(kpi_cols, kpi_data):
+        with col:
+            with st.container(border=True):
+                # Delta badge styling
+                delta_badge = ""
+                spark_color = "#38470B"  # default moss green
+                if delta is not None:
+                    arrow = "▲" if delta >= 0 else "▼"
+                    is_good = (delta >= 0 and not invert) or (delta < 0 and invert)
+                    badge_class = "kpi-badge-up" if is_good else "kpi-badge-down"
+                    delta_badge = f'<span class="{badge_class}">{arrow} {abs(delta):.1f}%</span>'
+                    spark_color = "#5D702A" if is_good else "#C05C5C"
+
+                # HTML layout for label and value + delta badge
+                st.markdown(f"""
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                    <div class="kpi-label">{label}</div>
+                    {delta_badge}
+                </div>
+                <div class="kpi-value-container" style="margin-top: 5px; margin-bottom: 5px;">
+                    <span class="kpi-value" style="font-size: 1.05rem; font-weight: 800; color: #2E3710;">{value}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+                # Plotly sparkline
+                if spark_series is not None and not spark_series.empty:
+                    fig_spark = px.line(spark_series, x=spark_series.index, y=spark_series.values, color_discrete_sequence=[spark_color])
+                    fig_spark.update_layout(
+                        showlegend=False,
+                        xaxis_visible=False,
+                        yaxis_visible=False,
+                        margin=dict(l=0, r=0, t=2, b=2),
+                        height=25,
+                        plot_bgcolor='rgba(0,0,0,0)',
+                        paper_bgcolor='rgba(0,0,0,0)',
+                        hovermode=False
+                    )
+                    fig_spark.update_traces(line=dict(width=1.5))
+                    st.plotly_chart(fig_spark, use_container_width=True, config={'displayModeBar': False})
 
     st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown('<div class="section-header-hero">Tren Revenue Bulanan</div>', unsafe_allow_html=True)
-        monthly_rev = filtered_df.groupby("month")["revenue"].sum().sort_index().reset_index()
-        fig = px.area(
-            monthly_rev, x="month", y="revenue",
-            labels={"month": "Bulan", "revenue": "Revenue"},
-            color_discrete_sequence=["#38470B"],
-            template=PLOTLY_TEMPLATE
-        )
-        fig.update_traces(
-            fill="tozeroy",
-            fillcolor="rgba(56, 71, 11, 0.15)",
-            line=dict(width=3),
-            mode="lines+markers",
-            marker=dict(size=7, color="#38470B", line=dict(width=1, color="#ffffff"))
-        )
-        fig.update_layout(
-            yaxis_tickformat=",",
-            yaxis_tickprefix="Rp ",
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="Inter", color="#7A6A4E", size=8),
-            height=200,
-            margin=dict(t=20, b=20, l=75, r=10)
-        )
-        st.plotly_chart(fig, width='stretch')
+    st.markdown('<div class="section-header-hero">Tren Revenue Bulanan</div>', unsafe_allow_html=True)
+    monthly_rev = filtered_df.groupby("month")["revenue"].sum().sort_index().reset_index()
+    fig = px.area(
+        monthly_rev, x="month", y="revenue",
+        labels={"month": "Bulan", "revenue": "Revenue"},
+        color_discrete_sequence=["#38470B"],
+        template=PLOTLY_TEMPLATE
+    )
+    fig.update_traces(
+        fill="tozeroy",
+        fillcolor="rgba(56, 71, 11, 0.15)",
+        line=dict(width=3),
+        mode="lines+markers",
+        marker=dict(size=7, color="#38470B", line=dict(width=1, color="#ffffff"))
+    )
+    fig.update_layout(
+        yaxis_tickformat=",",
+        yaxis_tickprefix="Rp ",
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", color="#7A6A4E", size=9),
+        height=400,
+        margin=dict(t=20, b=20, l=75, r=10)
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
-    with col2:
-        st.markdown('<div class="section-header-hero">Revenue per Kategori Produk</div>', unsafe_allow_html=True)
-        category_rev = filtered_df.groupby("product_category")["revenue"].sum().sort_values(ascending=False).reset_index()
-        fig = px.bar(
-            category_rev, x="product_category", y="revenue",
-            color="product_category",
-            color_discrete_sequence=COLOR_SEQUENCE,
-            labels={"product_category": "Kategori", "revenue": "Revenue"},
-            template=PLOTLY_TEMPLATE,
-            text=category_rev["revenue"].apply(format_compact_rp)
-        )
-        fig.update_traces(textposition="outside", textfont=dict(size=8))
-        fig.update_layout(
-            yaxis_tickformat=",",
-            yaxis_tickprefix="Rp ",
-            yaxis_range=[0, category_rev["revenue"].max() * 1.15],
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="Inter", color="#7A6A4E", size=8),
-            showlegend=False,
-            height=200,
-            margin=dict(t=20, b=20, l=75, r=10)
-        )
-        st.plotly_chart(fig, width='stretch')
+    st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="section-header-hero">Revenue per Kategori Produk</div>', unsafe_allow_html=True)
+    category_rev = filtered_df.groupby("product_category")["revenue"].sum().sort_values(ascending=False).reset_index()
+    fig = px.bar(
+        category_rev, x="product_category", y="revenue",
+        color="product_category",
+        color_discrete_sequence=COLOR_SEQUENCE,
+        labels={"product_category": "Kategori", "revenue": "Revenue"},
+        template=PLOTLY_TEMPLATE,
+        text=category_rev["revenue"].apply(format_compact_rp)
+    )
+    fig.update_traces(textposition="outside", textfont=dict(size=9))
+    fig.update_layout(
+        yaxis_tickformat=",",
+        yaxis_tickprefix="Rp ",
+        yaxis_range=[0, category_rev["revenue"].max() * 1.15],
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", color="#7A6A4E", size=9),
+        showlegend=False,
+        height=400,
+        margin=dict(t=20, b=20, l=75, r=10)
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
 # ==================================================
 # TAB 2 — Analisis Pasar & Operasional
 # ==================================================
-with tab2:
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown('<div class="section-header">Top 10 Provinsi (Revenue)</div>', unsafe_allow_html=True)
-        province_rev = filtered_df.groupby("customer_province")["revenue"].sum().sort_values(ascending=True).tail(10).reset_index()
-        fig = px.bar(
-            province_rev, x="revenue", y="customer_province",
-            orientation="h",
-            color="revenue",
-            color_continuous_scale=["#F1D6AB", "#38470B"],
-            labels={"customer_province": "Provinsi", "revenue": "Revenue"},
-            template=PLOTLY_TEMPLATE,
-            text=province_rev["revenue"].apply(format_compact_rp)
-        )
-        fig.update_traces(textposition="outside", textfont=dict(size=8))
-        fig.update_layout(
-            xaxis_tickformat=",",
-            xaxis_tickprefix="Rp ",
-            xaxis_range=[0, province_rev["revenue"].max() * 1.15],
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="Inter", color="#7A6A4E", size=8),
-            coloraxis_showscale=False,
-            height=200,
-            margin=dict(t=10, b=20, l=100, r=10)
-        )
-        st.plotly_chart(fig, width='stretch')
-
-    with col2:
-        st.markdown('<div class="section-header">Kelompok Usia Pelanggan</div>', unsafe_allow_html=True)
-        age_rev = filtered_df.groupby("age_group", observed=True)["revenue"].sum().reset_index()
-        fig = px.bar(
-            age_rev, x="age_group", y="revenue",
-            color="age_group",
-            color_discrete_sequence=COLOR_SEQUENCE,
-            labels={"age_group": "Kelompok Usia", "revenue": "Revenue"},
-            template=PLOTLY_TEMPLATE,
-            text=age_rev["revenue"].apply(format_compact_rp)
-        )
-        fig.update_traces(textposition="outside", textfont=dict(size=8))
-        fig.update_layout(
-            yaxis_tickformat=",",
-            yaxis_tickprefix="Rp ",
-            yaxis_range=[0, age_rev["revenue"].max() * 1.15],
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="Inter", color="#7A6A4E", size=8),
-            showlegend=False,
-            height=200,
-            margin=dict(t=10, b=20, l=75, r=10)
-        )
-        st.plotly_chart(fig, width='stretch')
+elif page == "🔍 Analisis Pasar & Ops":
+    st.markdown('<div class="section-header">Top 10 Provinsi (Revenue)</div>', unsafe_allow_html=True)
+    province_rev = filtered_df.groupby("customer_province")["revenue"].sum().sort_values(ascending=True).tail(10).reset_index()
+    fig = px.bar(
+        province_rev, x="revenue", y="customer_province",
+        orientation="h",
+        color="revenue",
+        color_continuous_scale=["#F1D6AB", "#38470B"],
+        labels={"customer_province": "Provinsi", "revenue": "Revenue"},
+        template=PLOTLY_TEMPLATE,
+        text=province_rev["revenue"].apply(format_compact_rp)
+    )
+    fig.update_traces(textposition="outside", textfont=dict(size=9))
+    fig.update_layout(
+        xaxis_tickformat=",",
+        xaxis_tickprefix="Rp ",
+        xaxis_range=[0, province_rev["revenue"].max() * 1.15],
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", color="#7A6A4E", size=9),
+        coloraxis_showscale=False,
+        height=400,
+        margin=dict(t=10, b=20, l=100, r=10)
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
     st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 
-    col3, col4 = st.columns(2)
-    with col3:
-        st.markdown('<div class="section-header">Tingkat Retur per Kategori</div>', unsafe_allow_html=True)
-        return_cat = filtered_df.groupby("product_category")["is_returned"].mean().reset_index()
-        return_cat["is_returned"] *= 100
-        fig = px.bar(
-            return_cat.sort_values("is_returned", ascending=False),
-            x="product_category", y="is_returned",
-            color="is_returned",
-            color_continuous_scale=["#FAF8F4", "#38470B"],
-            labels={"product_category": "Kategori", "is_returned": "Retur (%)"},
-            template=PLOTLY_TEMPLATE,
-            text=return_cat.sort_values("is_returned", ascending=False)["is_returned"].apply(lambda x: f"{x:.1f}%")
-        )
-        fig.update_traces(textposition="outside", textfont=dict(size=8))
-        fig.update_layout(
-            yaxis_ticksuffix="%",
-            yaxis_range=[0, return_cat["is_returned"].max() * 1.15],
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="Inter", color="#7A6A4E", size=8),
-            coloraxis_showscale=False,
-            height=200,
-            margin=dict(t=10, b=20, l=40, r=10)
-        )
-        st.plotly_chart(fig, width='stretch')
+    st.markdown('<div class="section-header">Kelompok Usia Pelanggan</div>', unsafe_allow_html=True)
+    age_rev = filtered_df.groupby("age_group", observed=True)["revenue"].sum().reset_index()
+    fig = px.bar(
+        age_rev, x="age_group", y="revenue",
+        color="age_group",
+        color_discrete_sequence=COLOR_SEQUENCE,
+        labels={"age_group": "Kelompok Usia", "revenue": "Revenue"},
+        template=PLOTLY_TEMPLATE,
+        text=age_rev["revenue"].apply(format_compact_rp)
+    )
+    fig.update_traces(textposition="outside", textfont=dict(size=9))
+    fig.update_layout(
+        yaxis_tickformat=",",
+        yaxis_tickprefix="Rp ",
+        yaxis_range=[0, age_rev["revenue"].max() * 1.15],
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", color="#7A6A4E", size=9),
+        showlegend=False,
+        height=400,
+        margin=dict(t=10, b=20, l=75, r=10)
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
-    with col4:
-        st.markdown('<div class="section-header">Hari Pengiriman vs Rating</div>', unsafe_allow_html=True)
-        delivery_rating = filtered_df.groupby("delivery_days").agg(rating_avg=("rating", "mean"), count=("order_id", "count")).reset_index().sort_values("delivery_days")
-        fig = px.line(
-            delivery_rating, x="delivery_days", y="rating_avg",
-            markers=True,
-            labels={"delivery_days": "Hari Pengiriman", "rating_avg": "Rating"},
-            color_discrete_sequence=["#38470B"],
-            template=PLOTLY_TEMPLATE,
-            text=delivery_rating["rating_avg"].apply(lambda x: f"{x:.2f}")
-        )
-        fig.update_traces(
-            line=dict(width=3),
-            marker=dict(size=(delivery_rating["count"] / delivery_rating["count"].max() * 12 + 4), line=dict(width=1, color="#ffffff")),
-            textposition="top center",
-            textfont=dict(size=8)
-        )
-        fig.update_layout(
-            yaxis_range=[1, 5.5],
-            plot_bgcolor="rgba(0,0,0,0)",
-            paper_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="Inter", color="#7A6A4E", size=8),
-            height=200,
-            margin=dict(t=10, b=20, l=40, r=10)
-        )
-        st.plotly_chart(fig, width='stretch')
+    st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="section-header">Tingkat Retur per Kategori</div>', unsafe_allow_html=True)
+    return_cat = filtered_df.groupby("product_category")["is_returned"].mean().reset_index()
+    return_cat["is_returned"] *= 100
+    fig = px.bar(
+        return_cat.sort_values("is_returned", ascending=False),
+        x="product_category", y="is_returned",
+        color="is_returned",
+        color_continuous_scale=["#FAF8F4", "#38470B"],
+        labels={"product_category": "Kategori", "is_returned": "Retur (%)"},
+        template=PLOTLY_TEMPLATE,
+        text=return_cat.sort_values("is_returned", ascending=False)["is_returned"].apply(lambda x: f"{x:.1f}%")
+    )
+    fig.update_traces(textposition="outside", textfont=dict(size=9))
+    fig.update_layout(
+        yaxis_ticksuffix="%",
+        yaxis_range=[0, return_cat["is_returned"].max() * 1.15],
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", color="#7A6A4E", size=9),
+        coloraxis_showscale=False,
+        height=400,
+        margin=dict(t=10, b=20, l=40, r=10)
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="section-header">Hari Pengiriman vs Rating</div>', unsafe_allow_html=True)
+    delivery_rating = filtered_df.groupby("delivery_days").agg(rating_avg=("rating", "mean"), count=("order_id", "count")).reset_index().sort_values("delivery_days")
+    fig = px.line(
+        delivery_rating, x="delivery_days", y="rating_avg",
+        markers=True,
+        labels={"delivery_days": "Hari Pengiriman", "rating_avg": "Rating"},
+        color_discrete_sequence=["#38470B"],
+        template=PLOTLY_TEMPLATE,
+        text=delivery_rating["rating_avg"].apply(lambda x: f"{x:.2f}")
+    )
+    fig.update_traces(
+        line=dict(width=3),
+        marker=dict(size=(delivery_rating["count"] / delivery_rating["count"].max() * 12 + 4), line=dict(width=1, color="#ffffff")),
+        textposition="top center",
+        textfont=dict(size=9)
+    )
+    fig.update_layout(
+        yaxis_range=[1, 5.5],
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", color="#7A6A4E", size=9),
+        height=400,
+        margin=dict(t=10, b=20, l=40, r=10)
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
 # ==================================================
 # TAB 3 — Insight Eksekutif
 # ==================================================
-with tab3:
+elif page == "💡 Insight Eksekutif":
     st.markdown(generate_ai_summary(filtered_df), unsafe_allow_html=True)
     st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
     st.markdown('<div class="section-header">Ringkasan Bulanan</div>', unsafe_allow_html=True)
 
-    monthly_summary = (
-        filtered_df
-        .groupby("month")
-        .agg(
-            Revenue=("revenue", "sum"),
-            Pesanan=("order_id", "count"),
-            Pelanggan=("customer_id", "nunique"),
-            Rating_Rata2=("rating", "mean"),
-            Retur_Persen=("is_returned", "mean")
-        )
-        .sort_index()
-        .reset_index()
+    # Filter state tracking to detect filter changes
+    current_filters = (
+        str(start_date),
+        str(end_date),
+        tuple(selected_categories),
+        tuple(selected_provinces),
+        tuple(selected_payments),
+        tuple(selected_tiers)
     )
-    monthly_summary.columns = ["Bulan", "Revenue", "Jumlah Pesanan", "Pelanggan Unik", "Rating Rata-rata", "Tingkat Retur (%)"]
-    monthly_summary["Tingkat Retur (%)"] = (monthly_summary["Tingkat Retur (%)"] * 100).round(2)
-    monthly_summary["Rating Rata-rata"] = monthly_summary["Rating Rata-rata"].round(2)
-    monthly_summary["Revenue"] = monthly_summary["Revenue"].apply(lambda x: f"Rp {x:,.0f}")
+
+    if "last_filters" not in st.session_state or st.session_state.last_filters != current_filters:
+        st.session_state.last_filters = current_filters
+
+        monthly_summary = (
+            filtered_df
+            .groupby("month")
+            .agg(
+                Revenue=("revenue", "sum"),
+                Pesanan=("order_id", "count"),
+                Pelanggan=("customer_id", "nunique"),
+                Rating_Rata2=("rating", "mean"),
+                Retur_Persen=("is_returned", "mean")
+            )
+            .sort_index()
+            .reset_index()
+        )
+        monthly_summary.columns = ["Bulan", "Revenue", "Jumlah Pesanan", "Pelanggan Unik", "Rating Rata-rata", "Tingkat Retur (%)"]
+        monthly_summary["Tingkat Retur (%)"] = (monthly_summary["Tingkat Retur (%)"] * 100).round(2)
+        monthly_summary["Rating Rata-rata"] = monthly_summary["Rating Rata-rata"].round(2)
+
+        st.session_state.monthly_summary_data = monthly_summary
+        st.session_state.monthly_summary_page = 1
+
+    # Control Panel: Sort & Pagination controls
+    col_sort_1, col_sort_2, col_page = st.columns([2.5, 1.5, 2])
+
+    with col_sort_1:
+        sort_col = st.selectbox(
+            "Urutkan Berdasarkan",
+            options=["Bulan", "Revenue", "Jumlah Pesanan", "Pelanggan Unik", "Rating Rata-rata", "Tingkat Retur (%)"],
+            index=0,
+            key="sort_col_select"
+        )
+    with col_sort_2:
+        sort_order = st.selectbox(
+            "Arah Urutan",
+            options=["Ascending", "Descending"],
+            index=0,
+            key="sort_order_select"
+        )
+
+    # Apply Sorting before paging and formatting
+    monthly_summary = st.session_state.monthly_summary_data
+    ascending_bool = (sort_order == "Ascending")
+    monthly_summary_sorted = monthly_summary.sort_values(by=sort_col, ascending=ascending_bool)
+
+    # Expander to edit row values dynamically
+    with st.expander(":material/edit: Edit Nilai Baris (Ubah Data Tabel)"):
+        col_edit_1, col_edit_2, col_edit_3 = st.columns(3)
+        with col_edit_1:
+            month_to_edit = st.selectbox(
+                "Pilih Bulan", 
+                options=monthly_summary_sorted["Bulan"].tolist(), 
+                key="edit_month_select"
+            )
+        with col_edit_2:
+            col_to_edit = st.selectbox(
+                "Pilih Kolom untuk Diubah",
+                options=["Revenue", "Jumlah Pesanan", "Pelanggan Unik", "Rating Rata-rata", "Tingkat Retur (%)"],
+                key="edit_col_select"
+            )
+        with col_edit_3:
+            current_row = monthly_summary_sorted[monthly_summary_sorted["Bulan"] == month_to_edit]
+            if not current_row.empty:
+                current_val = current_row[col_to_edit].values[0]
+            else:
+                current_val = 0.0
+
+            if col_to_edit in ["Jumlah Pesanan", "Pelanggan Unik"]:
+                new_val = st.number_input(f"Nilai Baru ({col_to_edit})", value=int(current_val), step=1, key="edit_val_input")
+            elif col_to_edit == "Revenue":
+                new_val = st.number_input(f"Nilai Baru ({col_to_edit})", value=float(current_val), step=100000.0, key="edit_val_input")
+            else:
+                new_val = st.number_input(f"Nilai Baru ({col_to_edit})", value=float(current_val), step=0.01, key="edit_val_input")
+
+        if st.button("Simpan Perubahan", icon=":material/save:", key="save_edit_button"):
+            # Update the original df in session state
+            idx = st.session_state.monthly_summary_data[st.session_state.monthly_summary_data["Bulan"] == month_to_edit].index[0]
+            st.session_state.monthly_summary_data.at[idx, col_to_edit] = new_val
+            st.success(f"Berhasil mengubah {col_to_edit} untuk bulan {month_to_edit}!")
+            st.rerun()
+
+    # Format fields for display
+    display_df = monthly_summary_sorted.copy()
+    display_df["Revenue"] = display_df["Revenue"].apply(lambda x: f"Rp {x:,.0f}" if isinstance(x, (int, float)) else str(x))
+
+    # Pagination logic
+    total_rows = len(display_df)
+    rows_per_page = 10
+    total_pages = max(1, ((total_rows - 1) // rows_per_page) + 1)
+
+    if st.session_state.monthly_summary_page > total_pages:
+        st.session_state.monthly_summary_page = total_pages
+
+    with col_page:
+        st.markdown("<div style='height: 18px;'></div>", unsafe_allow_html=True)  # Spacer
+        sub_col1, sub_col2, sub_col3 = st.columns([1, 2, 1])
+        with sub_col1:
+            prev_btn = st.button("", icon=":material/chevron_left:", key="prev_page", disabled=(st.session_state.monthly_summary_page == 1))
+            if prev_btn:
+                st.session_state.monthly_summary_page -= 1
+                st.rerun()
+        with sub_col2:
+            st.markdown(f"<div style='text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;'>Hal {st.session_state.monthly_summary_page} / {total_pages}</div>", unsafe_allow_html=True)
+        with sub_col3:
+            next_btn = st.button("", icon=":material/chevron_right:", key="next_page", disabled=(st.session_state.monthly_summary_page == total_pages))
+            if next_btn:
+                st.session_state.monthly_summary_page += 1
+                st.rerun()
+
+    # Slice for current page
+    start_idx = (st.session_state.monthly_summary_page - 1) * rows_per_page
+    end_idx = start_idx + rows_per_page
+    paginated_df = display_df.iloc[start_idx:end_idx]
+
+    # Calculate optimal height to display up to 10 rows without internal scrollbars
+    optimal_height = (len(paginated_df) + 1) * 35 + 3
 
     st.dataframe(
-        monthly_summary,
-        width='stretch',
+        paginated_df,
+        use_container_width=True,
         hide_index=True,
-        height=140
+        height=optimal_height
     )
 
 # (Footer removed)
