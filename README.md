@@ -1,55 +1,53 @@
-# Shopnesia Executive Dashboard 📊🌲
+# Panduan Pengguna — Shopnesia Executive Dashboard 📊🌲
 
-Shopnesia Executive Dashboard adalah dashboard analitik bisnis e-commerce premium yang dirancang dengan performa tinggi dan estetika visual modern. Memanfaatkan skema warna bernuansa alam (*forest & moss green*) yang harmonis, dashboard ini memberikan kenyamanan visual sekaligus kedalaman informasi analitis bagi jajaran eksekutif.
-
----
-
-## 🎨 Panduan Desain & Palet Warna
-
-Dashboard ini menerapkan skema warna bertema alam yang konsisten:
-- **Primary Moss Green (`#38470B`)**: Digunakan untuk elemen utama dan teks penting.
-- **Dark Forest Green (`#2E3710`)**: Latar belakang navigation menu.
-- **Light Accent Green (`#8CA052`)**: Gradasi dan aksen positif.
-- **Secondary Sand/Tan (`#A0855B`)**: Garis pembatas sekunder.
-- **Accent Red (`#C05C5C`)**: Penurunan performa (tren negatif).
-- **Background Cream (`#F9F6F2`)**: Warna dasar halaman web.
+Selamat datang di **Shopnesia Executive Dashboard**! Aplikasi ini dirancang khusus bagi jajaran manajemen dan eksekutif untuk memantau performa bisnis, menganalisis pasar, serta mendapatkan wawasan operasional e-commerce secara cepat, interaktif, dan mudah dipahami.
 
 ---
 
-## ⚙️ Fitur-Fitur Sistem
+## 💡 Apa yang Bisa Anda Lakukan di Dashboard Ini?
 
-- **Sparkline Mingguan**: Tren naik (hijau) atau turun (merah) mingguan pada metrik utama.
-- **Pagination Dinamis**: Membatasi tabel "Ringkasan Bulanan" maksimal 10 baris per halaman.
-- **Pre-Sorted Pagination**: Pengurutan kolom yang dihitung sebelum data disajikan per halaman.
-- **In-Place Row Editor**: Form interaktif berikon material `:material/edit:` untuk memutasi data.
-- **Material Icons**: Seluruh aksi kontrol menggunakan ikon Material Design asli, bebas dari emoticon.
+Dashboard ini dibagi menjadi tiga halaman utama yang dapat Anda akses melalui menu navigasi di sebelah kiri:
+
+### 1. 📊 Ringkasan Performa
+*   **Pantau Metrik Bisnis Utama**: Temukan ringkasan total pendapatan (*Revenue*), jumlah pesanan, rata-rata rating kepuasan pelanggan, serta tingkat retur barang secara instan.
+*   **Tren Grafik**: Visualisasikan pertumbuhan pendapatan bulanan dan performa penjualan per kategori produk.
+
+### 2. 🔍 Analisis Pasar & Operasional
+*   **Distribusi Geografis**: Ketahui provinsi dengan kontribusi penjualan tertinggi.
+*   **Analisis Pengiriman**: Analisis efisiensi logistik (rata-rata hari pengiriman) dan hubungannya dengan rating kepuasan pelanggan.
+*   **Preferensi Pembayaran**: Identifikasi metode pembayaran terpopuler yang paling sering digunakan oleh pelanggan Anda.
+
+### 3. 💡 Insight Eksekutif
+*   **Ringkasan Otomatis**: Dapatkan ringkasan performa penjualan secara instan.
+*   **Tabel Ringkasan Bulanan**: Telusuri data kinerja bulanan secara detail lengkap dengan fitur pengurutan kolom dan pembagian halaman (*pagination*).
+*   **Ubah Data Langsung**: Anda dapat menyesuaikan atau mengubah nilai data bulanan secara langsung pada tabel menggunakan panel edit yang disediakan.
 
 ---
 
-## 🛠️ Persyaratan Sistem
+## 🎛️ Cara Menggunakan Fitur Interaktif
 
-Pastikan library berikut terinstall (didefinisikan dalam `requirements.txt`):
-- `streamlit` (Disarankan versi >= 1.35.0 untuk dukungan Material Icons)
-- `pandas`
-- `plotly`
-- `openpyxl` (untuk membaca file dataset)
+*   **Penyaringan Data (Filter)**: Gunakan panel filter di sidebar kiri untuk menyaring data berdasarkan rentang tanggal, kategori produk, wilayah provinsi, metode pembayaran, atau tier merek (*brand tier*). Semua grafik dan kartu metrik akan terupdate secara otomatis.
+*   **Melihat Detail Grafik**: Arahkan kursor (*hover*) ke area grafik Plotly untuk melihat angka detail di setiap titik data atau batang diagram.
+*   **Mengubah Data Tabel**: Buka panel ekspansi *"Edit Nilai Baris"* di Tab Insight Eksekutif, masukkan angka baru yang Anda inginkan, lalu tekan tombol simpan untuk memperbarui tampilan tabel secara instan.
 
 ---
 
 ## 🚀 Cara Menjalankan Aplikasi
 
-1. **Clone repository:**
+Aplikasi ini dapat dijalankan dengan mudah melalui langkah-langkah berikut:
+
+1. **Unduh kode sumber (Clone):**
    ```bash
    git clone <repository-url>
    cd dashboard_shopnesia
    ```
 
-2. **Install dependensi:**
+2. **Pasang paket pendukung (Dependencies):**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Jalankan server Streamlit:**
+3. **Jalankan aplikasi:**
    ```bash
    streamlit run tugas_dashboard.py
    ```
